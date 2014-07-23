@@ -1,0 +1,36 @@
+{
+	"version": "1.0",
+	"name": "FFXMemoria",
+	"description": "Teste sua memoria!",
+	"launch_path": "/index.html",
+	"permissions": {
+		"storage": {
+			"description": "Para armazenar dados no banco indexeddb."
+		} 
+	},
+	"icons": {
+		"32": "/imagens/icon-32.png",
+		"64": "/imagens/icon-64.png",
+		"128": "/imagens/icon-128.png"
+	},
+	"developer": {
+		"name": "Evtn4224",
+		"url": "http://evtnweb.blogspot.com"
+	},
+	"installs_allowed_from": ["*"],
+	"locales": {
+		"en": {
+			"description": "Ajude a sua memoria",
+			"developer": {
+				"url": "https://dl.dropboxusercontent.com/u/61410416/ffxmemoria/index.html"
+			}
+		}
+	},
+	"it": {
+		"description": "Ajudando mentes",
+		"developer": {
+			"url": "https://dl.dropboxusercontent.com/u/61410416/ffxmemoria/index.html"
+		}
+	},
+	"default_locale": "en"
+}
