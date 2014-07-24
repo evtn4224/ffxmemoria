@@ -15,21 +15,21 @@
 	},
 	"developer": {
 		"name": "Evtn4224",
-		"url": "http://evtnweb.blogspot.com"
+		"url": "https://github.com/evtn4224/"
 	},
 	"installs_allowed_from": ["*"],
 	"locales": {
 		"en": {
 			"description": "Ajude a sua memoria",
 			"developer": {
-				"url": "https://dl.dropboxusercontent.com/u/61410416/ffxmemoria/index.html"
+				"url": "https://github.com/evtn4224/ffxmemoria"
 			}
 		}
 	},
 	"it": {
 		"description": "Ajudando mentes",
 		"developer": {
-			"url": "https://dl.dropboxusercontent.com/u/61410416/ffxmemoria/index.html"
+			"url": "https://github.com/evtn4224/ffxmemoria"
 		}
 	},
 	"default_locale": "en"
