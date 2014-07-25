@@ -3,7 +3,7 @@
 	"name": "FFXMemoria",
 	"description": "Teste sua memoria",
 	"launch_path": "/index.html",
-	"icon": {
+	"icons": {
 		"32": "/imagens/icon-32.png",
 		"64": "/imagens/icon-64.png",
 		"128": "/imagens/icon-128.png"
