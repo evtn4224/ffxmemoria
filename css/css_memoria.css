@@ -95,12 +95,12 @@ body
 [data-position="current"] > #boxbotoes ul li
 {
     width: 100px;
-    border: 3px solid #ffffff;
+    border: 3px solid #E7E7E7;
     font-family: sans-serif;
     font-weight: bold;
-    color: #ffffff;
+    color: #E7E7E7;
     text-align: center;
-    background-color: #df7614;
+    background-color: #FF4E00;
     margin-top: 5%;
     border-radius: 12px;
     padding: 6% 0%;
@@ -108,8 +108,8 @@ body
 [data-position="current"] > #boxbotoes ul li:hover
 {
     font-weight: normal;
-    color: #ffffff;
-    background-color: #9d1b02;
+    color: #F4F4F4F;
+    background-color: #B90000;
     cursor: pointer;
 }
 /* DEFINE A CAIXA COM AS IMAGENS */
