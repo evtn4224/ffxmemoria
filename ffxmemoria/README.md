@@ -1,1 +1,0 @@
-Aplicacao para firefox OS mobile.
