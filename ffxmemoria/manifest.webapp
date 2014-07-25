@@ -22,14 +22,14 @@
 		"en": {
 			"description": "Ajude a sua memoria",
 			"developer": {
-				"url": "https://github.com/evtn4224/projetos-evtnweb/tree/master/ffxmemoria"
+				"url": "https://github.com/evtn4224/ffxmemoria"
 			}
 		}
 	},
 	"it": {
 		"description": "Ajudando mentes",
 		"developer": {
-			"url": "https://github.com/evtn4224/projetos-evtnweb/tree/master/ffxmemoria"
+			"url": "https://github.com/evtn4224/ffxmemoria"
 		}
 	},
 	"default_locale": "en"

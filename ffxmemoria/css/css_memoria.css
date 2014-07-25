@@ -6,7 +6,6 @@
 }
 /* DÁ A ALTURA TOTAL AO DOCUMENTO */
 html{ height: 100%; }
-.hidden{ visibility: hidden; }
 body
 {
 	margin: 0;
@@ -14,11 +13,114 @@ body
 	display: block;
 	overflow: hidden;
 }
-#index{	height: 100%; }
+#index
+{	
+    height: 100%;
+    background: #1588c6; /* Old browsers */
+    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);
+}
+/* AJUSTA A TELA */
+#iniciar
+{  
+    margin: 2% auto;
+    width: 100%;
+    height: 75%;
+    z-index: 5;
+    position: absolute;
+    top: 18%;
+    left: 0;
+    
+}
+/* ANIMA O BACKGROUND */
+#iniciar > .img
+{
+    position: relative;
+    width: 310px;
+    height: 310px;
+    background: url("../imagens/logo2.png") no-repeat 0px 0px;
+    left: 50%;
+    margin-left: -155px;
+    -moz-animation: animeimg 160s infinite;
+}
+@-moz-keyframes animeimg
+{
+    0% { -moz-transform: rotate(0); }
+    100% { -moz-transform: rotate(360deg); }
+}
+/* CAIXA DO TÍTULO */
+#topo 
+{ 
+    width: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+}
+/* DEFINE O CABEÇALHO DO TÍTULO */
+#topo > h2
+{
+	font-size: 22pt;
+	color: rgb(224, 100, 0);
+	text-align: center;
+	text-shadow: #333 2px 2px 2px;
+    margin: 2% 6%;
+    -moz-animation: coresalternadas 35s infinite alternate linear;
+}
+/* CORES ALTERNADAS DO TÍTULO DO JOGO */
+@-moz-keyframes coresalternadas
+{
+    0% { color: white; }
+    12% { color: grey; }
+    24% { color: red; }
+    36% { color: orange; }
+    48% { color: yellow; }
+    60% { color: green; }
+    80% { color: blue; }
+    100% { color: violet; }
+}
+/* BOTÕES */
+[data-position="current"] > #boxbotoes
+{
+    width: auto;
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    margin-left: -50px;
+    z-index: 100;
+}
+[data-position="current"] > #boxbotoes ul
+{
+    list-style: none;
+}
+[data-position="current"] > #boxbotoes ul li
+{
+    width: 100px;
+    border: 3px solid #ffffff;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    background-color: #df7614;
+    margin-top: 5%;
+    border-radius: 12px;
+    padding: 6% 0%;
+}
+[data-position="current"] > #boxbotoes ul li:hover
+{
+    font-weight: normal;
+    color: #ffffff;
+    background-color: #9d1b02;
+    cursor: pointer;
+}
 /* DEFINE A CAIXA COM AS IMAGENS */
+#quadros
+{
+    background: #1588c6; /* Old browsers */
+    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);   
+}
 div#placar
 {
-    background: #00aadd;
+    /*background: #00aadd;
     width: 100%;/*320px;*/
     height: 100%;
     padding: 1% 0%;
@@ -49,27 +151,7 @@ div#placar > div
     display: none;
 }
 /* ------------------------------------------------ */
-/* CAIXA DO TÍTULO COM O BOTÃO FECHA */
-#topo 
-{ 
-    width: 100%;
-    position:absolute;
-    top: 0;
-    left: 0;
-    z-index: 10; 
-}
-/* DEFINE O BOTÃO DE FECHAR */
-span#fechar
-{
-	background: url(headers/images/icons/close.png) no-repeat center center;
-	width: 30px;
-    height: 30px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: block;
-}
-/* */
+/* PROPRIEDADES DA ÁREA DO RELÓGIO */
 #dvtempo
 {
     width: auto;
@@ -81,41 +163,12 @@ span#fechar
     z-index: 10;
     padding: 2px;
 }
-/* DEFINE O CABEÇALHO DO TÍTULO */
-#topo > h2
-{
-	font-size: 22pt;
-	color: rgb(224, 100, 0);
-	text-align: center;
-	text-shadow: #333 2px 2px 2px;
-    margin: 6% 6%;
-    -moz-animation: coresalternadas 35s infinite alternate linear;
-}
-/* CORES ALTERNADAS DO TÍTULO DO JOGO */
-@-moz-keyframes coresalternadas
-{
-    0% { color: white; }
-    12% { color: grey; }
-    24% { color: red; }
-    36% { color: orange; }
-    48% { color: yellow; }
-    60% { color: green; }
-    80% { color: blue; }
-    100% { color: violet; }
-}
-/* AJUSTA A TELA */
-#iniciar
-{
-    margin: 2% auto;
-    width: 90%;
-    height: 75%;
-    z-index: 5;
-    position: absolute;
-    top: 18%;
-    left: 5%;
-	cursor: pointer;
-}
 /* CABEÇALHO DA LISTA DE PONTOS */
+#lists
+{
+    background: #1588c6; /* Old browsers */
+    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);   
+}
 #lists > h4
 {
 	font-size: 18pt;
@@ -165,6 +218,8 @@ section[role="region"] > .fixed > menu[type="toolbar"] > button
     padding: 0;
     border-radius: 0;
 }
+/* ESCONDE A SECTION */
+.hidden{ visibility: hidden; }
 /* --------------------------------------------------- */
 /* ANIMA PARA A DIREITA */
 [data-position="right"]

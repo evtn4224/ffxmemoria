@@ -3,13 +3,9 @@
     URL: http://www.evtnweb.blogspot.com.br
 */
 // INICIA O JOGO AO CLICAR NA IMAGEM DO FIREFOX
-document.querySelector('#iniciar').addEventListener('click', function()
-{
-	telaJogo();
-});
 function telaJogo()
 {
-	document.querySelector('#input-areas').className = 'current';
+	document.querySelector('#quadros').className = 'current';
 	document.querySelector('[data-position="current"]').className = 'left';
 	inicializeDB();
     iniciaJogo();
@@ -22,7 +18,7 @@ document.querySelector('#btn-lists-back').addEventListener('click', function()
 });
 function telaInicial()
 {
-	document.querySelector('#input-areas').className = 'right';
+	document.querySelector('#quadros').className = 'right';
 	document.querySelector('[data-position="current"]').className = 'current';
 	paraContador();
 }
@@ -40,11 +36,6 @@ document.querySelector('#btn-pontos').addEventListener('click', function()
 	telaInicial();
 });
 // ---------------------------------------------------------------------------
-// FECHA A APLICAÇÃO
-document.querySelector('#fechar').addEventListener('click', function () 
-{
-    fecharApp();
-});
 // LIMPA OS DADOS GRAVADOS NO BANCO
 document.querySelector('#limparDado').addEventListener('click', function () 
 {
@@ -52,4 +43,20 @@ document.querySelector('#limparDado').addEventListener('click', function ()
 	{
         limpaDados();
 	}
+});
+// BOTÕES DA TELA DE ÍNICIO
+// ÍNICIO
+document.querySelector('#inicio').addEventListener('click', function () 
+{
+    telaJogo();
+});
+// SOM
+document.querySelector('#pontos').addEventListener('click', function () 
+{
+    listaPontos();
+});
+// SAIR
+document.querySelector('#sair').addEventListener('click', function () 
+{
+    fecharApp();
 });

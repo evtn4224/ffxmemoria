@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta content="no-cache">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content-type="application/x-web-app-manifest+json" charset="utf-8"></meta>
+    <meta content="no-cache" http-equiv="pragma"></meta>
+	<meta name="viewport" content="width=320" name="viewport"></meta>
     <title>FFXMemoria</title>
     <link type="text/css" rel="stylesheet" href="css/css_memoria.css" />
 	<link type="text/css" rel="stylesheet" href="css/transitions.css" />
@@ -18,17 +18,25 @@
 	<!------------------------------------------ Tela Inicial ------------------------------------------>
     <section id="index" data-position="current">
 		<div id="topo">
-            <a href="#"><span id="fechar"></span></a>
             <h2>Jogo de mem&oacute;ria FFOS</h2>
 		</div>
         <div id="iniciar">
-            <image  src="imagens/logo.png" width="100%" height="100%" />
+            <div class="img"></div>
+            <!--<div class="img"></div>
+            <image src="imagens/logo2.png" width="70%" height="50%" />-->
+        </div>
+        <div id="boxbotoes">
+            <ul>
+                <li id="inicio">Iniciar</li>
+                <li id="pontos">Tempos</li>
+                <li id="sair">Sair</li>
+            </ul>
         </div>
 	</section>
 	
 	<!---------------------------------------------- Game ---------------------------------------------->
 		
-	<section role="region" id="input-areas" data-position="right">
+	<section role="region" id="quadros" data-position="right">
 		<header class="fixed">
             <a id="btn-lists-back" href="#"><span class="icon icon-close">back</span></a>
         </header>
