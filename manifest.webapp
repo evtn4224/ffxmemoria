@@ -1,3 +1,4 @@
+AddType application/x-web-app-manifest+json
 {
 	"version": "1.0",
 	"name": "FFXMemoria",
