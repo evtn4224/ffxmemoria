@@ -4,9 +4,9 @@
 	"description": "Teste sua memoria",
 	"launch_path": "/index.html",
 	"icons": {
-		"32": "/imagens/icon-32.png",
-		"64": "/imagens/icon-64.png",
-		"128": "/imagens/icon-128.png"
+		"32": "https://github.com/evtn4224/ffxmemoria/tree/master/imagens/icon-32.png",
+		"64": "https://github.com/evtn4224/ffxmemoria/tree/master/imagens/icon-64.png",
+		"128": "https://github.com/evtn4224/ffxmemoria/tree/master/imagens/icon-128.png"
 	},
 	"developer": {
 		"name": "Evtn4224",
