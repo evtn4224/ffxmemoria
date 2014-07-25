@@ -1,1 +1,1 @@
-Projetos de trabalho e estudos evtnweb.
+Aplicacao para firefox OS mobile.
