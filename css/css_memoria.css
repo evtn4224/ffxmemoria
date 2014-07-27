@@ -1,3 +1,8 @@
+/*
+    Desenvolvedor: Everton Figueiredo - Evtn4224
+    Github: https://github.com/evtn4224/ffxmemoria
+    E-mail: everton4224@gmail.com
+*/
 /* ZERA TODOS OS ELEMENTOS COM 0 EM MARGIN E PADDING */
 *
 {
@@ -12,12 +17,39 @@ body
 	height: 100%;
 	display: block;
 	overflow: hidden;
+    background-color: #333333;
+}
+#telapres
+{
+    width: 100%;
+    height: 100%;
+    background: url("../imagens/logo.png") center center no-repeat;
+    z-index: 100;
 }
 #index
 {	
     height: 100%;
     background: #1588c6; /* Old browsers */
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#1588c6), to(#33c3e8));
+    background: -webkit-linear-gradient(#1588c6 0%, #33c3e8 100%);
     background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: -o-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: linear-gradient(#1588c6 0%, #33c3e8 100%);
+}
+/* DESCRIÇÃO DA MÚSICA */
+#descautor
+{
+    width: 100%;
+    text-align: center;
+    font-family: "fantasy", sans-serif, Arial;
+    font-size: 0.5rem;
+    color: #FFFFFF;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
 }
 /* AJUSTA A TELA */
 #iniciar
@@ -32,20 +64,127 @@ body
     
 }
 /* ANIMA O BACKGROUND */
-#iniciar > .img
+.boxanime
 {
-    position: relative;
+    position: absolute;
     width: 310px;
     height: 310px;
-    background: url("../imagens/logo2.png") no-repeat 0px 0px;
     left: 50%;
     margin-left: -155px;
-    -moz-animation: animeimg 160s infinite;
 }
+/* ANIMAÇÃO DO FOGUETE FIREFOX MARKETPLACE */
+.boxanime > #rocket
+{
+    width: 100px;
+    height: 60px;
+    display: block;
+    background: url("../imagens/rocket.png") no-repeat 0px 0px;
+    transform: rotate(-40deg);
+    -moz-transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    margin-top: 5%;
+}
+#iniciar > #atmosf
+{
+    animation: animerocket 140s infinite;
+    -moz-animation: animerocket 140s infinite;
+    -webkit-animation: animerocket 140s infinite;
+    -ms-animation: animerocket 140s infinite;
+    -o-animation: animerocket 140s infinite;
+    z-index: 100;   
+}
+/* MONZILLA */
+@-moz-keyframes animerocket
+{
+    0% 
+    { 
+        transform: rotate(0);
+        -moz-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+    100% 
+    { 
+        transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+    }
+}
+/* CHROME */
+@-webkit-keyframes animerocket
+{
+    0% 
+    { 
+        transform: rotate(0);
+        -moz-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+    100% 
+    { 
+        transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+    }
+}
+/* ANIMAÇÃO DO LOGO FIREFOX */
+#iniciar > #bg
+{
+    background: url("../imagens/logo2.png") no-repeat 0px 0px;
+    animation: animeimg 160s infinite;
+    -moz-animation: animeimg 160s infinite;
+    -webkit-animation: animeimg 160s infinite;
+    -ms-animation: animeimg 160s infinite;
+    -o-animation: animeimg 160s infinite;
+    z-index: 10;
+}
+/* MONZILLA */
 @-moz-keyframes animeimg
 {
-    0% { -moz-transform: rotate(0); }
-    100% { -moz-transform: rotate(360deg); }
+    0% 
+    { 
+        transform: rotate(0);
+        -moz-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+    100% 
+    { 
+        transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+/* CHROME */
+@-webkit-keyframes animeimg
+{
+    0% 
+    { 
+        transform: rotate(0);
+        -moz-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+    100% 
+    { 
+        transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
 }
 /* CAIXA DO TÍTULO */
 #topo 
@@ -64,7 +203,11 @@ body
 	text-align: center;
 	text-shadow: #333 2px 2px 2px;
     margin: 2% 6%;
+    animation: coresalternadas 35s infinite alternate linear;
     -moz-animation: coresalternadas 35s infinite alternate linear;
+    -webkit-animation: coresalternadas 35s infinite alternate linear;
+    -ms-animation: coresalternadas 35s infinite alternate linear;
+    -o-animation: coresalternadas 35s infinite alternate linear;
 }
 /* CORES ALTERNADAS DO TÍTULO DO JOGO */
 @-moz-keyframes coresalternadas
@@ -79,7 +222,7 @@ body
     100% { color: violet; }
 }
 /* BOTÕES */
-[data-position="current"] > #boxbotoes
+section[role="region"] > #boxbotoes
 {
     width: auto;
     position: absolute;
@@ -88,11 +231,11 @@ body
     margin-left: -50px;
     z-index: 100;
 }
-[data-position="current"] > #boxbotoes ul
+section[role="region"] > #boxbotoes ul
 {
     list-style: none;
 }
-[data-position="current"] > #boxbotoes ul li
+section[role="region"] > #boxbotoes ul li
 {
     width: 100px;
     border: 3px solid #E7E7E7;
@@ -105,26 +248,55 @@ body
     border-radius: 12px;
     padding: 6% 0%;
 }
-[data-position="current"] > #boxbotoes ul li:hover
+section[role="region"] > #boxbotoes ul li:hover
 {
     font-weight: normal;
     color: #F4F4F4F;
     background-color: #B90000;
     cursor: pointer;
 }
+/* BOTÃO DO SOM E MÚSICA */
+.btnsom
+{
+    width: 35px;
+    height: 32px;
+    position: absolute;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    z-index: 10;
+    cursor: pointer;
+}
+/* BOTÃO OFF */
+#somoff
+{
+    background: url("../imagens/som_off.png") no-repeat 0px 0px;
+    display: none;
+}
+/* BOTÃO ON */
+#somon
+{
+    background: url("../imagens/som_on.png") no-repeat 0px 0px;
+}
 /* DEFINE A CAIXA COM AS IMAGENS */
 #quadros
 {
     background: #1588c6; /* Old browsers */
-    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);   
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#1588c6), to(#33c3e8));
+    background: -webkit-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: -o-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: linear-gradient(#1588c6 0%, #33c3e8 100%);   
 }
+/* BOX COM OS QUADRO DE IMAGENS */
 div#placar
 {
     /*background: #00aadd;
     width: 100%;/*320px;*/
     height: 100%;
     padding: 1% 0%;
-    margin: 0px auto;    
+    margin: 0px auto;
+    min-width: 320px;
+    max-width: 480px;
 }
 /* DEFINE A CAIXA DA IMAGEM COM A IMAGEM */
 div#placar > div
@@ -138,8 +310,13 @@ div#placar > div
     padding: 0px;
     cursor: pointer;
     border-radius: 2px;
+    transition: all ease 1s;
     -moz-transition: all ease 1s;
+    -webkit-transition: all ease 1s;
+    -ms-transition: all ease 1s;
+    -o-transition: all ease 1s;
 }
+/* BOX DA IMAGENS ENCONTRADA */
 #acertou
 {
     width: 40%;
@@ -167,7 +344,11 @@ div#placar > div
 #lists
 {
     background: #1588c6; /* Old browsers */
-    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);   
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#1588c6), to(#33c3e8));
+    background: -webkit-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: -moz-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: -o-linear-gradient(#1588c6 0%, #33c3e8 100%);
+    background: linear-gradient(#1588c6 0%, #33c3e8 100%);
 }
 #lists > h4
 {
@@ -180,11 +361,16 @@ div#placar > div
 /* CAIXA DA LISTA DE PONTOS */
 #box-list
 {
-    margin: 5px 10px;
+    width: 310px;
     overflow-x: hidden;
     background-color: #ffffff;
     text-align: center;
     max-height: 70%;
+    max-width: 320px;
+    position: absolute;
+    left: 50%;
+    margin-left: -155px;
+    box-shadow: 3px 3px 3px #333333;
     border-radius: 5px;
 }
 /* TEXTO DA LISTA */
@@ -206,7 +392,7 @@ section[role="region"] > .fixed > menu[type="toolbar"]
 }
 section[role="region"] > .fixed > menu[type="toolbar"] > .pack-icon-delete
 {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA85kAAImUAAB+3gAA7PgAADObAAAQ5ap9ykMAAADhSURBVHja7NY/SgNBFMfxz0oEsbTXRiw8gNYJGEglOUVO4DE8kKCg2CUXSJNKe+uEgM9miyW4sju7sCDzg4GZN8P7zsx786eICEPoyEAaDDxqMfYYE9zhGifYYo0XvGLf1FnxR4zPcVvZlQs84glvlXEzjPGAj9L2jRU+a8kR8VuZR8QuumkXEfc1/mtXvMFlD6Hc4KrNVn/1mEdnbWM8WFY/V+rTg3ZT2zQlq6sdxUG7qa3IN1cGZ3AGZ/D/By862Dq9TqlKep2WHaHvqSs+xU35rW2rfTnxbQo4H6de9TMAgtWj/wSFyMoAAAAASUVORK5CYII=);   
+    background: url("../imagens/lixo.png");
 }
 section[role="region"] > .fixed > menu[type="toolbar"] > button
 {
@@ -232,6 +418,7 @@ section[role="region"] > .fixed > menu[type="toolbar"] > button
 	transform: translateX(100%);
 	-webit-transform: translateX(100%);
     -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
     -o-transform: translateX(100%);
 	z-index: 20;
 	z-index: 100;
@@ -243,6 +430,7 @@ section[role="region"][data-position="right"]{ position: absolute; }
 	animation: rightToCurrent 0.4s forwards;
 	-webkit-animation: rightToCurrent 0.4s forwards;
     -moz-animation: rightToCurrent 0.4s forwards;
+    -ms-animation: rightToCurrent 0.4s forwards;
     -o-animation: rightToCurrent 0.4s forwards;
 }
 [data-position="right"].right
@@ -250,6 +438,7 @@ section[role="region"][data-position="right"]{ position: absolute; }
 	animation: currentToRight 0.4s forwards;
 	-webkit-animation: currentToRight 0.4s forwards;
     -moz-animation: currentToRight 0.4s forwards;
+    -ms-animation: currentToRight 0.4s forwards;
     -o-animation: currentToRight 0.4s forwards;
 }
 /* ANIMA PARA A ESQUERDA */
@@ -258,6 +447,7 @@ section[role="region"][data-position="right"]{ position: absolute; }
 	animation: currentToLeft 0.4s forwards;
 	-webkit-animation: currentLeft 0.4s forwards;
     -moz-animation: currentLeft 0.4s forwards;
+    -ms-animation: currentLeft 0.4s forwards;
     -o-animation: currentLeft 0.4s forwards;
 }
 [data-position="current"].current
@@ -265,6 +455,7 @@ section[role="region"][data-position="right"]{ position: absolute; }
 	animation: leftToCurrent 0.4s forwards;
 	-webkit-animation: leftToCurrent 0.4s forwards;
     -moz-animation: leftToCurrent 0.4s forwards;
+    -ms-animation: leftToCurrent 0.4s forwards;
     -o-animation: leftToCurrent 0.4s forwards;
 }
 /* RETORNA A SECTION */

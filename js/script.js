@@ -1,6 +1,7 @@
 /*
     Desenvolvedor: Everton Figueiredo - Evtn4224
-    URL: http://www.evtnweb.blogspot.com.br
+    Github: https://github.com/evtn4224/ffxmemoria
+    E-mail: everton4224@gmail.com
 */
 // ===============================================
 // RECEBE AS IMAGENS
@@ -36,8 +37,11 @@ var valor_memoria = [];
 var id_memoria = [];
 var telas_flipped = 0;
 var wow = new Audio("audio/notifier_spring.ogg");
+wow.volume = 0.2;
 var fail = new Audio("audio/notifier_ring.ogg");
+fail.volume = 0.2;
 var ring = new Audio("audio/ring.ogg");
+var musicColums = new Audio("audio/columns_clotho_sega_genesis.ogg");
 var contaErros = 0;
 var contaTempo = 1;
 var st = null;
@@ -47,6 +51,23 @@ var divTempo = document.getElementById('dvtempo');
 var tempoContado = '';
 var acertou = document.getElementById('acertou');
 var vetId = [];
+var img = document.createElement('img');
+var telaApres = document.getElementById('telapres');
+// ===============================================
+
+// TELA DE APRESENTAÇÃO
+function telaApresentação()
+{
+    telaApres.style.display = "none";
+    document.querySelector('#index').className = 'current';
+	document.querySelector('[data-position="current"]').className = 'left';
+    // INICIA A MÚSICA
+    musicColums.play();
+    musicColums.loop = true;
+    musicColums.volume = 0.5;
+}
+setTimeout(telaApresentação, 5000);
+// ===============================================
 
 // FUNÇÃO QUE ADICIONA POSIÇÕES ALEATÓRIA PARA AS IMAGENS DO VETOR
 Array.prototype.memory_tela_shuffle = function()
@@ -60,12 +81,12 @@ Array.prototype.memory_tela_shuffle = function()
 		this[i] = temp;
 	}
 }
-
 // ===============================================
 
 // INICIA O JOGO
 function iniciaJogo()
-{   
+{
+    musicColums.volume = 0.2;
 	contaErros = 0;
 	contaTempo = 1;
 	telas_flipped = 0;
@@ -117,6 +138,8 @@ function converteTempo(sec)
 	}
 	tempoContado = tempo;
 }
+// ===============================================
+
 // IRÁ RETORNAR O TEMPO EM TEMPO REAL
 function tempoAtual()
 {
@@ -133,6 +156,8 @@ function contador()
     converteTempo(contaTempo);
     divTempo.innerHTML = "Tempo: "+tempoAtual();
 }
+// ===============================================
+
 // PARA O CONTADOR
 function paraContador()
 {
@@ -166,7 +191,7 @@ function toqueNaImagem(tela, val, id)
 		//tela.style.background = '#FFF';
 		//tela.innerHTML = val;
 		tela.style.transform = "rotateY(180deg)";         // ROTACIONA A IMAGEM EM 180º
-        tela.style.background = "url("+val+") no-repeat"; // ADICONA A IMAGEM AO CLIQUE
+        tela.style.background = "url("+val+") center center no-repeat "; // ADICONA A IMAGEM AO CLIQUE
         
         // ADICIONA A PRIMEIRA IMAGEM CLICADA NA DIV
 		if(valor_memoria.length == 0)
@@ -202,12 +227,11 @@ function toqueNaImagem(tela, val, id)
 			{
                 //console.log("valor_memoria[0]: "+valor_memoria[0]+" / valor_memoria[1]: "+valor_memoria[1]+" / val1: "+val1+" / val1: "+val2);
                 
-				wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
+                wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
                 
                 // EXIBE A IMAGEM EM FADE E SOME EM SEGUIDA QUANDO ENCONTRADO AS FIGURAS
                 $('#acertou').fadeIn(1000);
                 acertou.style.display = "block";
-                var img = document.createElement('img');
                 img.setAttribute("src",val);
                 img.setAttribute("width","100%");
                 img.setAttribute("height","100%");
@@ -221,8 +245,7 @@ function toqueNaImagem(tela, val, id)
                 tl2.removeAttribute('onclick');
                 
                 // LIMPA OS VETORES COM OS IDS GUARDADOS
-                vetId[0] = '';
-                vetId[1] = '';
+                vetId = [];
                 
                 // REMOVE A IMAGEM COM O INTERVALO DE 1100 MILISSEGUNDOS
                 function fechaImg()
@@ -230,7 +253,7 @@ function toqueNaImagem(tela, val, id)
                     acertou.style.display = "none";
                     acertou.removeChild(img);  
                 }
-                setTimeout(fechaImg, 1100);
+                setTimeout(fechaImg, 1000);
 
                 // ZERA OS VALORES DAS POSIÇOES
 				val1 = "";
@@ -257,14 +280,15 @@ function toqueNaImagem(tela, val, id)
 				{
                     //console.log("acabou! => "+converteTempo(contaTempo));
 					paraContador();
-                    listaPontos();
                     
-                    //var tempo = tempoAtual();
+                    musicColums.volume = 0.5; // RETORNA AO VOLUME INICIAL
                     
                     divTempo.style.display = "none";                    // ESCONDE O DISPLAY DE TEMPO
 					document.getElementById('placar').innerHTML = "";  // LIMPA A DIV COM AS IMAGENS
 					
                     addPontos(contaTempo, contaErros); // ADICIONA NA FUNÇÃO QUE CONTA O TEMPO E OS ERRORS
+                    
+                    listaPontos();
 				}
 			}
 			else // SENÃO RETORNA A TELA INICIAL
@@ -280,9 +304,10 @@ function toqueNaImagem(tela, val, id)
                     tela_1.style.transform = "rotateY(0)";
                     tela_2.style.transform = "rotateY(0)";
                     
-					tela_1.style.background = 'url(imagens/firefox.png) no-repeat';
+                    // ADICIONA AS IMAGENS INICIAIS
+					tela_1.style.background = 'url(imagens/firefox.png) center center no-repeat';
 					tela_1.innerHTML = "";
-					tela_2.style.background = 'url(imagens/firefox.png) no-repeat';
+					tela_2.style.background = 'url(imagens/firefox.png) center center no-repeat';
 					tela_2.innerHTML = "";
 					
                     // ZERA OS VETORES
@@ -295,7 +320,8 @@ function toqueNaImagem(tela, val, id)
 				val1 = "";
 				val2 = "";
 				
-                fail.play();    // TOCA UM SOM PARA CADA ERRO E CONTA
+                // TOCA UM SOM PARA CADA ERRO E CONTA
+                fail.play();
 				
                 if(contaErros == 0) contaErros = 1; // VERIFICA SE OCORREU O PRIMEIRO ERRO PARA COMEÇAR A CONTAR
 				
@@ -304,6 +330,8 @@ function toqueNaImagem(tela, val, id)
 		}
 	}
 }
+// ===============================================
+
 // RETORNARÁ O VALOR MAIOR E MENOR LIDO
 function lerValorMaMe(valMa, posValMa, valMe, posValMe)
 {
@@ -316,3 +344,4 @@ function lerValorMaMe(valMa, posValMa, valMe, posValMe)
     document.getElementById('pos_'+posValMe).style.color = "#0088cc";
     document.getElementById('pos_'+posValMe).style.fontWeight = "bold";
 }
+// ===============================================

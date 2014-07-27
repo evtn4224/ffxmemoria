@@ -1,29 +1,49 @@
+<!--
+    Desenvolvedor: Everton Figueiredo - Evtn4224
+    Github: https://github.com/evtn4224/ffxmemoria
+    E-mail: everton4224@gmail.com
+-->
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="no-cache; application/x-web-app-manifest+json; charset=UTF-8"></meta>
-    <meta name="viewport" content="width=320" name="viewport"></meta>
+    <meta http-equiv="Content-Type" content="no-cache; charset=UTF-8"></meta>
+    <meta name="viewport" content="width=320"></meta>
     <title>FFXMemoria</title>
+    
+    <!--------------------------------------------- CSS ---------------------------------------------> 
     <link type="text/css" rel="stylesheet" href="css/css_memoria.css" />
 	<link type="text/css" rel="stylesheet" href="css/transitions.css" />
 	<link type="text/css" rel="stylesheet" href="css/headers.css" />
 	<link type="text/css" rel="stylesheet" href="css/lists.css" />
 
+    <!------------------------------------------ JAVASCRIPT ------------------------------------------> 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/indexdb.js"></script>
 </head>
 <body>
-	
+
+	<!------------------------------------------ Tela de apresentação ------------------------------------------>
+    <section id="telapres" data-position="current">
+        <!-- Imagens de apresentação -->
+    </section>
 	<!------------------------------------------ Tela Inicial ------------------------------------------>
-    <section id="index" data-position="current">
-		<div id="topo">
+    <section role="region" id="index" data-position="right">
+        
+        <!-- DESCRIÇÃO DO DESENVOLVEODR -->
+        <marquee id="descautor"><img src="imagens/rocket.png" width="3%" height="3%" /> Música: Columns Clotho Sega Genesis - Desenvolvido por: http://github.com/evtn4224</marquee>
+		
+        <!-- TÍTULO DO JOGO-->
+        <div id="topo">
             <h2>Jogo de mem&oacute;ria FFOS</h2>
 		</div>
+        
+        <!-- BOXS DE ANOMAÇÃO DO BACKGROUND -->
         <div id="iniciar">
-            <div class="img"></div>
-            <!--<div class="img"></div>
-            <image src="imagens/logo2.png" width="70%" height="50%" />-->
+            <div class="boxanime" id="atmosf"><span id="rocket"></span></div>
+            <div class="boxanime" id="bg"></div>
         </div>
+        
+        <!-- BOTÕES DE INÍCIO, TEMPO E SAIR -->
         <div id="boxbotoes">
             <ul>
                 <li id="inicio">Iniciar</li>
@@ -31,6 +51,11 @@
                 <li id="sair">Sair</li>
             </ul>
         </div>
+        
+        <!-- BOTÕES DO SOM -->
+        <div class="btnsom" id="somoff"></div>
+        <div class="btnsom" id="somon"></div>
+	
 	</section>
 	
 	<!---------------------------------------------- Game ---------------------------------------------->
@@ -40,7 +65,9 @@
             <a id="btn-lists-back" href="#"><span class="icon icon-close">back</span></a>
         </header>
         <div id="dvtempo"></div>
-		<div id="placar"></div>
+		<div id="placar">
+		    <!-- IMAGENS -->
+		</div>
 		<div id="acertou"></div>
 	</section>
 	
@@ -55,11 +82,9 @@
         </header>
         <h4>Hist&oacute;rico dos resultados</h4>
         <article id="box-list">
-            <!--<section data-type="list">-->
-                <ul id="list-pontos">
-                
-                </ul>
-            <!--</section>-->
+            <ul id="list-pontos">
+               <!-- LISTA DE TEMPOS --> 
+            </ul>
         </article>
     </section>
     

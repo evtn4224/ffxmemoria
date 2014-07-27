@@ -1,9 +1,10 @@
 /*
     Desenvolvedor: Everton Figueiredo - Evtn4224
-    URL: http://www.evtnweb.blogspot.com.br
+    Github: https://github.com/evtn4224/ffxmemoria
+    E-mail: everton4224@gmail.com
 */
 
-// FONTE DO MODELO DE CRUD DO indexedDB: 
+// FONTE DO indexedDB: 
 // http://rominirani.com/2013/08/15/firefox-os-tutorial-episode-7-storage-using-indexeddb/
 
 var db;

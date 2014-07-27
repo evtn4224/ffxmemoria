@@ -1,6 +1,7 @@
 /*
     Desenvolvedor: Everton Figueiredo - Evtn4224
-    URL: http://www.evtnweb.blogspot.com.br
+    Github: https://github.com/evtn4224/ffxmemoria
+    E-mail: everton4224@gmail.com
 */
 // INICIA O JOGO AO CLICAR NA IMAGEM DO FIREFOX
 function telaJogo()
@@ -14,13 +15,14 @@ function telaJogo()
 // RETORNARÁ A TELA DE APRESENTAÇÃO DO JOGO
 document.querySelector('#btn-lists-back').addEventListener('click', function()
 {
-	telaInicial();
+    musicColums.volume = 0.5;
+    telaInicial();
 });
 function telaInicial()
 {
 	document.querySelector('#quadros').className = 'right';
 	document.querySelector('[data-position="current"]').className = 'current';
-	paraContador();
+    paraContador();
 }
 // ---------------------------------------------------------------------------
 // ABRE A TELA DE LISTA DE RESULTADO
@@ -33,7 +35,7 @@ document.querySelector('#btn-pontos').addEventListener('click', function()
 {
     document.querySelector('#lists').className = 'right';
 	document.querySelector('[data-position="current"]').className = 'current';
-	telaInicial();
+    telaInicial();
 });
 // ---------------------------------------------------------------------------
 // LIMPA OS DADOS GRAVADOS NO BANCO
@@ -54,9 +56,25 @@ document.querySelector('#inicio').addEventListener('click', function ()
 document.querySelector('#pontos').addEventListener('click', function () 
 {
     listaPontos();
+    lerPontos();
 });
 // SAIR
 document.querySelector('#sair').addEventListener('click', function () 
 {
     fecharApp();
+});
+// PAUSA O SOM E A MÚSICA
+var btnon = document.getElementById("somon");
+var btnoff = document.getElementById("somoff");
+document.querySelector('#somon').addEventListener('click', function () 
+{
+    btnoff.style.display = "block";
+    btnon.style.display = "none";
+    musicColums.pause();
+});
+document.querySelector('#somoff').addEventListener('click', function () 
+{
+    btnon.style.display = "block";
+    btnoff.style.display = "none";
+    musicColums.play();
 });
