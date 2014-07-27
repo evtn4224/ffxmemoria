@@ -1,21 +1,21 @@
 {
-	"version": "1.0",
 	"name": "FFXMemoria",
+	"version": "1.0",
 	"description": "Teste sua memoria",
 	"launch_path": "/index.html",
-	"icons": {
-		"32": "/imagens/icon-32.png",
-		"60": "/imagens/icon-60.png",
-		"128": "/imagens/icon-128.png"
+	"permissions": {
+		"storage": {
+			"description": "Para armazenar dados no banco indexeddb."
+		} 
 	},
 	"developer": {
 		"name": "Evtn4224",
 		"url": "https://github.com/evtn4224/"
 	},
-	"permissions": {
-		"storage": {
-			"description": "Para armazenar dados no banco indexeddb."
-		} 
+	"icons": {
+		"32": "/imagens/icon-32.png",
+		"60": "/imagens/icon-60.png",
+		"128": "/imagens/icon-128.png"
 	},
 	"default_locale": "en"
 }
