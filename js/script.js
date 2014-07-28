@@ -41,7 +41,6 @@ wow.volume = 0.2;
 var fail = new Audio("audio/notifier_ring.ogg");
 fail.volume = 0.2;
 var ring = new Audio("audio/ring.ogg");
-var musicColums = new Audio("audio/columns_clotho_sega_genesis.ogg");
 var contaErros = 0;
 var contaTempo = 1;
 var st = null;
@@ -53,18 +52,15 @@ var acertou = document.getElementById('acertou');
 var vetId = [];
 var img = document.createElement('img');
 var telaApres = document.getElementById('telapres');
+var habilSom = true;
 // ===============================================
 
 // TELA DE APRESENTAÇÃO
 function telaApresentação()
 {
-    telaApres.style.display = "none";
-    document.querySelector('#index').className = 'current';
+	telaApres.style.display = "none";
+	document.querySelector('#index').className = 'current';
 	document.querySelector('[data-position="current"]').className = 'left';
-    // INICIA A MÚSICA
-    musicColums.play();
-    musicColums.loop = true;
-    musicColums.volume = 0.5;
 }
 setTimeout(telaApresentação, 5000);
 // ===============================================
@@ -83,31 +79,38 @@ Array.prototype.memory_tela_shuffle = function()
 }
 // ===============================================
 
+// HABILITA O SOM
+function fhabilSom(hab)
+{
+    habilSom = hab;
+    //console.log("habilSom: "+habilSom);
+}
+// ===============================================
+
 // INICIA O JOGO
 function iniciaJogo()
 {
-    musicColums.volume = 0.2;
 	contaErros = 0;
 	contaTempo = 1;
 	telas_flipped = 0;
 	var telas = '';
 	
-    // RECEBE AS IMAGENS DO VETOR ALEATORIAMENTE
+    	// RECEBE AS IMAGENS DO VETOR ALEATORIAMENTE
 	array_img.memory_tela_shuffle();
 	
-    // ADICIONA O ID DIV E A AS IMAGENS
+    	// ADICIONA O ID DIV E A AS IMAGENS
 	for(var i = 0; i < array_img.length; i++)
 	{
         // ADICIONA O ID, CHAMA A FUNÇÃO AO CLICAR E PASSA A IMAGEM E A POSIÇÃO POR PARÂMETRO
 		telas += '<div id="tela_'+i+'" onclick="toqueNaImagem(this,\''+array_img[i]+'\','+i+')"></div>';
 	}
 	
-    // ADICIONA TODAS AS DIVS COM IMAGENS NA DIV placar
+    	// ADICIONA TODAS AS DIVS COM IMAGENS NA DIV placar
 	document.getElementById('placar').innerHTML = telas;
     
-    // CHAMA A FUNÇÃO PARA CONTAR O TEMPOS DO JOGO
+    	// CHAMA A FUNÇÃO PARA CONTAR O TEMPOS DO JOGO
 	divTempo.style.display = "block";
-    contador();
+    	contador();
 }
 // ===============================================
 
@@ -153,8 +156,8 @@ function contador()
 	contaTempo++;
 	st = setTimeout("contador()", 1000);
 	//console.log("contaTempo: "+contaTempo);
-    converteTempo(contaTempo);
-    divTempo.innerHTML = "Tempo: "+tempoAtual();
+	converteTempo(contaTempo);
+	divTempo.innerHTML = "Tempo: "+tempoAtual();
 }
 // ===============================================
 
@@ -168,7 +171,6 @@ function paraContador()
 // ABRE UM ALERTA DE CONFIRMAÇÃO PARA FECHA A APLICAÇÃO OU NÃO
 function fecharApp()
 {
-	ring.play();
 	if (confirm('Fecha a aplicação?'))
 	{
 		window.close();
@@ -185,15 +187,15 @@ function toqueNaImagem(tela, val, id)
 {
 	//console.log("tela: "+tela+" - val: "+val+" - id: "+id);
     
-    // VERIFICA SE A TELA ESTÁ VAZIA E O TAMANHO DO VALOR DA MEMÓRIA É MENOR QUE 2
+    	// VERIFICA SE A TELA ESTÁ VAZIA E O TAMANHO DO VALOR DA MEMÓRIA É MENOR QUE 2
 	if(tela.innerHTML == "" && valor_memoria.length < 2)
 	{
 		//tela.style.background = '#FFF';
 		//tela.innerHTML = val;
 		tela.style.transform = "rotateY(180deg)";         // ROTACIONA A IMAGEM EM 180º
-        tela.style.background = "url("+val+") center center no-repeat "; // ADICONA A IMAGEM AO CLIQUE
+        	tela.style.background = "url("+val+") center center no-repeat "; // ADICONA A IMAGEM AO CLIQUE
         
-        // ADICIONA A PRIMEIRA IMAGEM CLICADA NA DIV
+        	// ADICIONA A PRIMEIRA IMAGEM CLICADA NA DIV
 		if(valor_memoria.length == 0)
 		{
 			valor_memoria.push(val);     // ADICIONA O VALOR DA MEMÓRIA
@@ -205,125 +207,124 @@ function toqueNaImagem(tela, val, id)
 			val1 = "";
 			//console.log("val2: "+val2);
             
-            vetId[0] = tela.id; // RECEBE O PRIMEIRO ID CLICADO E ARMAZENDA NO VETOR
+            		vetId[0] = tela.id; // RECEBE O PRIMEIRO ID CLICADO E ARMAZENDA NO VETOR
             
 		}
 		else if(valor_memoria.length == 1)    // ADICIONA A SEGUNDA IMAGEM CLICADA NA DIV
 		{
-            // ADICIONA NOVAMENTE O VALOR DA SEGUNDA IMAGEM
+            		// ADICIONA NOVAMENTE O VALOR DA SEGUNDA IMAGEM
 			valor_memoria.push(val);
 			id_memoria.push(tela.id);
 			val1 = id;
 			
-            vetId[1] = tela.id; // RECEBE O SEGUNDO ID CLICADO E ARMAZENDA NO VETOR        
-            
-            //console.log("vetId[0]: "+vetId[0]+" / vetId[1]: "+vetId[1]);
-            
-            //console.log("val1: "+val1+" - val2: "+val2);
-			// VERIFICA SE O CONTEUDO SÃO IGUAIS E NÃO É O MESMO
-            // Exp: valor_memoria[0]: imagens/redpanda.png -> IMAGEM
-            // Exp: val1: 6 -> POSIÇÃO NO VETOR INICIADA POR ZERO
+            		vetId[1] = tela.id; // RECEBE O SEGUNDO ID CLICADO E ARMAZENDA NO VETOR        
+	            
+			//console.log("vetId[0]: "+vetId[0]+" / vetId[1]: "+vetId[1]);
+			
+			//console.log("val1: "+val1+" - val2: "+val2);
+				// VERIFICA SE O CONTEUDO SÃO IGUAIS E NÃO É O MESMO
+			// Exp: valor_memoria[0]: imagens/redpanda.png -> IMAGEM
+			// Exp: val1: 6 -> POSIÇÃO NO VETOR INICIADA POR ZERO
 			if(valor_memoria[0] == valor_memoria[1] && val1 != val2)
 			{
-                //console.log("valor_memoria[0]: "+valor_memoria[0]+" / valor_memoria[1]: "+valor_memoria[1]+" / val1: "+val1+" / val1: "+val2);
-                
-                wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
-                
-                // EXIBE A IMAGEM EM FADE E SOME EM SEGUIDA QUANDO ENCONTRADO AS FIGURAS
-                $('#acertou').fadeIn(1000);
-                acertou.style.display = "block";
-                img.setAttribute("src",val);
-                img.setAttribute("width","100%");
-                img.setAttribute("height","100%");
-                acertou.appendChild(img);
-                $('#acertou').fadeOut(1000);
-                
-                // REMOVE A CHAMADA DO EVENTO DO CLICK PARA NÃO SER CLICADO QUANDO ENCONTRADO AS FIGURAS IGUAIS
-                var tl1 = document.getElementById(vetId[0]);
-                tl1.removeAttribute('onclick');
-                var tl2 = document.getElementById(vetId[1]);
-                tl2.removeAttribute('onclick');
-                
-                // LIMPA OS VETORES COM OS IDS GUARDADOS
-                vetId = [];
-                
-                // REMOVE A IMAGEM COM O INTERVALO DE 1100 MILISSEGUNDOS
-                function fechaImg()
-                {    
-                    acertou.style.display = "none";
-                    acertou.removeChild(img);  
-                }
-                setTimeout(fechaImg, 1000);
-
-                // ZERA OS VALORES DAS POSIÇOES
+                		//console.log("valor_memoria[0]: "+valor_memoria[0]+" / valor_memoria[1]: "+valor_memoria[1]+" / val1: "+val1+" / val1: "+val2);
+		                
+		                if(habilSom == true) wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
+		                
+		                // EXIBE A IMAGEM EM FADE E SOME EM SEGUIDA QUANDO ENCONTRADO AS FIGURAS
+		                $('#acertou').fadeIn(1000);
+		                acertou.style.display = "block";
+		                img.setAttribute("src",val);
+		                img.setAttribute("width","100%");
+		                img.setAttribute("height","100%");
+		                acertou.appendChild(img);
+		                $('#acertou').fadeOut(1000);
+		                
+		                // REMOVE A CHAMADA DO EVENTO DO CLICK PARA NÃO SER CLICADO QUANDO ENCONTRADO AS FIGURAS IGUAIS
+		                var tl1 = document.getElementById(vetId[0]);
+		                tl1.removeAttribute('onclick');
+		                var tl2 = document.getElementById(vetId[1]);
+		                tl2.removeAttribute('onclick');
+		                
+		                // LIMPA OS VETORES COM OS IDS GUARDADOS
+		                vetId = [];
+		                
+		                // REMOVE A IMAGEM COM O INTERVALO DE 1100 MILISSEGUNDOS
+		                function fechaImg()
+		                {    
+		                    acertou.style.display = "none";
+		                    acertou.removeChild(img);  
+		                }
+		                setTimeout(fechaImg, 1000);
+		
+		                // ZERA OS VALORES DAS POSIÇOES
 				val1 = "";
 				val2 = "";
-				
-                // ADICIONA O ID DA IMAGEM
-                var tela_op1 = document.getElementById(id_memoria[0]);
+						
+		                // ADICIONA O ID DA IMAGEM
+		                var tela_op1 = document.getElementById(id_memoria[0]);
 				var tela_op2 = document.getElementById(id_memoria[1]);
-                
-                // DEIXA A IMAGEM COM TRANSPARÊNCIA DE 0.3
-                tela_op1.style.opacity = "0.3";
-                tela_op2.style.opacity = "0.3";
-                
-                telas_flipped += 2; // CONTA OS CLICLES ACERTADOS PARA COMPARAR COM O TAMANHO DO VETOR DE IMAGENS
-				
-                //console.log("telas_flipped: "+telas_flipped);
-                
-                // LIMA OS VETORES DE LAVOR E ID
+		                
+		                // DEIXA A IMAGEM COM TRANSPARÊNCIA DE 0.3
+		                tela_op1.style.opacity = "0.3";
+		                tela_op2.style.opacity = "0.3";
+		                
+		                telas_flipped += 2; // CONTA OS CLICLES ACERTADOS PARA COMPARAR COM O TAMANHO DO VETOR DE IMAGENS
+						
+		                //console.log("telas_flipped: "+telas_flipped);
+		                
+		                // LIMA OS VETORES DE LAVOR E ID
 				valor_memoria = [];
 				id_memoria = [];
 				
-                // VERIFICA OS ACERTOS É IGUAL AO TAMANHO DE IMAGENS DO VETOR PARA FINALIZAR O JOGO
+        			 // VERIFICA OS ACERTOS É IGUAL AO TAMANHO DE IMAGENS DO VETOR PARA FINALIZAR O JOGO
 				if(telas_flipped == array_img.length)
 				{
-                    //console.log("acabou! => "+converteTempo(contaTempo));
+                    			//console.log("acabou! => "+converteTempo(contaTempo));
 					paraContador();
                     
-                    musicColums.volume = 0.5; // RETORNA AO VOLUME INICIAL
                     
-                    divTempo.style.display = "none";                    // ESCONDE O DISPLAY DE TEMPO
+					divTempo.style.display = "none";                    // ESCONDE O DISPLAY DE TEMPO
 					document.getElementById('placar').innerHTML = "";  // LIMPA A DIV COM AS IMAGENS
+							
+					addPontos(contaTempo, contaErros); // ADICIONA NA FUNÇÃO QUE CONTA O TEMPO E OS ERRORS
 					
-                    addPontos(contaTempo, contaErros); // ADICIONA NA FUNÇÃO QUE CONTA O TEMPO E OS ERRORS
-                    
-                    listaPontos();
+					listaPontos();
 				}
 			}
 			else // SENÃO RETORNA A TELA INICIAL
 			{
-                // POSICIONA AS IMAGENS ANTERIORES NUM INTERVALO DE 1 MILESSEGUNDO
+                		// POSICIONA AS IMAGENS ANTERIORES NUM INTERVALO DE 1 MILESSEGUNDO
 				function flip2Back()
 				{
-                    // RECEBE A DIV DAS IMAGENS COM O ID
+                    			// RECEBE A DIV DAS IMAGENS COM O ID
 					var tela_1 = document.getElementById(id_memoria[0]);
 					var tela_2 = document.getElementById(id_memoria[1]);
 					
-                    // ROTACIONA A IMAGEM INICIAL
-                    tela_1.style.transform = "rotateY(0)";
-                    tela_2.style.transform = "rotateY(0)";
-                    
-                    // ADICIONA AS IMAGENS INICIAIS
+					// ROTACIONA A IMAGEM INICIAL
+					tela_1.style.transform = "rotateY(0)";
+					tela_2.style.transform = "rotateY(0)";
+					
+					// ADICIONA AS IMAGENS INICIAIS
 					tela_1.style.background = 'url(imagens/firefox.png) center center no-repeat';
 					tela_1.innerHTML = "";
 					tela_2.style.background = 'url(imagens/firefox.png) center center no-repeat';
 					tela_2.innerHTML = "";
 					
-                    // ZERA OS VETORES
+                			// ZERA OS VETORES
 					valor_memoria = [];
 					id_memoria = [];
 				}
 				setTimeout(flip2Back, 1000); // CHAMA A FUNÇÃO NUM INTERVALO DE 1 MILISSEGUNDO
 				
-                // ZERA OS VALORES DAS POSIÇOES
+                		// ZERA OS VALORES DAS POSIÇOES
 				val1 = "";
 				val2 = "";
 				
-                // TOCA UM SOM PARA CADA ERRO E CONTA
-                fail.play();
-				
-                if(contaErros == 0) contaErros = 1; // VERIFICA SE OCORREU O PRIMEIRO ERRO PARA COMEÇAR A CONTAR
+				// TOCA UM SOM PARA CADA ERRO E CONTA
+				if(habilSom == true) fail.play();
+						
+				if(contaErros == 0) contaErros = 1; // VERIFICA SE OCORREU O PRIMEIRO ERRO PARA COMEÇAR A CONTAR
 				
 				contaErros++; // INCREMENTA OS ERROS
 			}

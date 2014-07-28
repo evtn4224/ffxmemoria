@@ -9,33 +9,32 @@ function telaJogo()
 	document.querySelector('#quadros').className = 'current';
 	document.querySelector('[data-position="current"]').className = 'left';
 	inicializeDB();
-    iniciaJogo();
+    	iniciaJogo();
 }
 // ---------------------------------------------------------------------------
 // RETORNARÁ A TELA DE APRESENTAÇÃO DO JOGO
 document.querySelector('#btn-lists-back').addEventListener('click', function()
 {
-    musicColums.volume = 0.5;
-    telaInicial();
+    	telaInicial();
 });
 function telaInicial()
 {
 	document.querySelector('#quadros').className = 'right';
 	document.querySelector('[data-position="current"]').className = 'current';
-    paraContador();
+    	paraContador();
 }
 // ---------------------------------------------------------------------------
 // ABRE A TELA DE LISTA DE RESULTADO
 function listaPontos()
 {
-    document.querySelector('#lists').className = 'current';
+    	document.querySelector('#lists').className = 'current';
 	document.querySelector('[data-position="current"]').className = 'left';
 }
 document.querySelector('#btn-pontos').addEventListener('click', function()
 {
-    document.querySelector('#lists').className = 'right';
+    	document.querySelector('#lists').className = 'right';
 	document.querySelector('[data-position="current"]').className = 'current';
-    telaInicial();
+    	telaInicial();
 });
 // ---------------------------------------------------------------------------
 // LIMPA OS DADOS GRAVADOS NO BANCO
@@ -43,38 +42,38 @@ document.querySelector('#limparDado').addEventListener('click', function ()
 {
 	if (confirm('Deseja realmente apagar todos os dados?'))
 	{
-        limpaDados();
+        	limpaDados();
 	}
 });
 // BOTÕES DA TELA DE ÍNICIO
 // ÍNICIO
 document.querySelector('#inicio').addEventListener('click', function () 
 {
-    telaJogo();
+    	telaJogo();
 });
 // SOM
 document.querySelector('#pontos').addEventListener('click', function () 
 {
-    listaPontos();
-    lerPontos();
+	listaPontos();
+	lerPontos();
 });
 // SAIR
 document.querySelector('#sair').addEventListener('click', function () 
 {
-    fecharApp();
+	fecharApp();
 });
 // PAUSA O SOM E A MÚSICA
 var btnon = document.getElementById("somon");
 var btnoff = document.getElementById("somoff");
 document.querySelector('#somon').addEventListener('click', function () 
 {
-    btnoff.style.display = "block";
-    btnon.style.display = "none";
-    musicColums.pause();
+	btnoff.style.display = "block";
+	btnon.style.display = "none";
+	fhabilSom(false);
 });
 document.querySelector('#somoff').addEventListener('click', function () 
 {
-    btnon.style.display = "block";
-    btnoff.style.display = "none";
-    musicColums.play();
+	btnon.style.display = "block";
+	btnoff.style.display = "none";
+	fhabilSom(true);
 });
