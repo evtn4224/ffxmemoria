@@ -69,13 +69,11 @@ document.querySelector('#somon').addEventListener('click', function ()
 {
 	btnoff.style.display = "block";
 	btnon.style.display = "none";
-	wow.pause();
-	fail.pause();
+	fhabilSom(false);
 });
 document.querySelector('#somoff').addEventListener('click', function () 
 {
 	btnon.style.display = "block";
 	btnoff.style.display = "none";
-	wow.play();
-	fail.play();
+	fhabilSom(true);
 });
