@@ -52,6 +52,7 @@ var acertou = document.getElementById('acertou');
 var vetId = [];
 var img = document.createElement('img');
 var telaApres = document.getElementById('telapres');
+var habilSom = true;
 // ===============================================
 
 // TELA DE APRESENTAÇÃO
@@ -75,6 +76,14 @@ Array.prototype.memory_tela_shuffle = function()
 		this[j] = this[i];
 		this[i] = temp;
 	}
+}
+// ===============================================
+
+// HABILITA O SOM
+function fhabilSom(hab)
+{
+    habilSom = hab;
+    //console.log("habilSom: "+habilSom);
 }
 // ===============================================
 
@@ -162,7 +171,6 @@ function paraContador()
 // ABRE UM ALERTA DE CONFIRMAÇÃO PARA FECHA A APLICAÇÃO OU NÃO
 function fecharApp()
 {
-	ring.play();
 	if (confirm('Fecha a aplicação?'))
 	{
 		window.close();
@@ -221,7 +229,7 @@ function toqueNaImagem(tela, val, id)
 			{
                 		//console.log("valor_memoria[0]: "+valor_memoria[0]+" / valor_memoria[1]: "+valor_memoria[1]+" / val1: "+val1+" / val1: "+val2);
 		                
-		                wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
+		                if(habilSom == true) wow.play(); // EMITE O SOM DE ACERTO E CONTA OS ACERTOS
 		                
 		                // EXIBE A IMAGEM EM FADE E SOME EM SEGUIDA QUANDO ENCONTRADO AS FIGURAS
 		                $('#acertou').fadeIn(1000);
@@ -314,7 +322,7 @@ function toqueNaImagem(tela, val, id)
 				val2 = "";
 				
 				// TOCA UM SOM PARA CADA ERRO E CONTA
-				fail.play();
+				if(habilSom == true) fail.play();
 						
 				if(contaErros == 0) contaErros = 1; // VERIFICA SE OCORREU O PRIMEIRO ERRO PARA COMEÇAR A CONTAR
 				
