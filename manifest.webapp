@@ -1,8 +1,8 @@
 {
 	"name": "FFXMemoria",
+	"description": "Teste sua memoria",
 	"version": "1.0",
 	"orientation": "portrait-primary",
-	"description": "Teste sua memoria",
 	"launch_path": "/index.html",
 	"type": "web",
 	"permissions": {
